@@ -7,104 +7,40 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+
+concurrency:
+  group: publish-release
+  cancel-in-progress: false
 
 jobs:
+  checks:
+    uses: ./.github/workflows/checks.yml
+
   release:
+    if: github.ref == 'refs/heads/main'
+    needs: checks
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
-      - name: Check out source
-        uses: actions/checkout@v4
-
+      - name: Download verified package
+        uses: actions/download-artifact@v4
+        with:
+          name: foundry-package
+          path: dist/
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-
-      - name: Validate manifest and release version
-        shell: bash
-        run: |
-          node <<'NODE'
-          const fs = require("node:fs");
-          const manifest = JSON.parse(fs.readFileSync("module.json", "utf8"));
-          const repository = process.env.GITHUB_REPOSITORY;
-          const repoName = repository.split("/").at(-1);
-          const releaseTag = `v${manifest.version}`;
-          const failures = [];
-
-          for (const field of ["id", "title", "version", "url", "manifest", "download"]) {
-            if (!manifest[field]) failures.push(`Missing manifest field: ${field}`);
-          }
-          if (manifest.id !== repoName) failures.push(`Module id ${manifest.id} does not match repository ${repoName}`);
-
-          const expectedManifest = `https://github.com/${repository}/releases/latest/download/module.json`;
-          const expectedDownload = `https://github.com/${repository}/releases/download/${releaseTag}/${manifest.id}-${releaseTag}.zip`;
-          if (manifest.manifest !== expectedManifest) failures.push(`Manifest URL should be ${expectedManifest}`);
-          if (manifest.download !== expectedDownload) failures.push(`Download URL should be ${expectedDownload}`);
-
-          if (failures.length) {
-            console.error(failures.join("\n"));
-            process.exit(1);
-          }
-          NODE
-
-      - name: Run automated tests
-        shell: bash
-        run: |
-          if [[ -f package-lock.json ]]; then
-            npm ci
-            npm test
-          elif [[ -f package.json ]]; then
-            npm install --no-audit --no-fund
-            npm test
-          elif compgen -G "tests/*.test.mjs" > /dev/null; then
-            node --test tests/*.test.mjs
-          elif compgen -G "tests/*.test.js" > /dev/null; then
-            node --test tests/*.test.js
-          else
-            echo "No automated test suite in this repository."
-          fi
-
-      - name: Build clean Foundry package
-        shell: bash
-        run: |
-          module_id=$(node -p 'require("./module.json").id')
-          release_tag="v$(node -p 'require("./module.json").version')"
-          rm -rf dist stage
-          mkdir -p "dist" "stage/${module_id}"
-          rsync -a ./ "stage/${module_id}/" \
-            --exclude='.git/' \
-            --exclude='.github/' \
-            --exclude='.gitignore' \
-            --exclude='node_modules/' \
-            --exclude='tests/' \
-            --exclude='package.json' \
-            --exclude='package-lock.json' \
-            --exclude='TESTING.md' \
-            --exclude='dist/' \
-            --exclude='stage/' \
-            --exclude='*.zip'
-          cp module.json dist/module.json
-          (cd stage && zip -q -r "../dist/${module_id}-${release_tag}.zip" "${module_id}")
-          find . -maxdepth 3 -type f -iname '*.pdf' -exec cp '{}' dist/ \;
-
-      - name: Verify release package
-        shell: bash
-        run: |
-          archive=$(find dist -maxdepth 1 -name '*.zip' -print -quit)
-          module_id=$(node -p 'require("./module.json").id')
-          unzip -t "$archive"
-          unzip -Z1 "$archive" | awk -v prefix="${module_id}/" 'index($0, prefix) != 1 { exit 1 }'
-          unzip -p "$archive" "${module_id}/module.json" | cmp - module.json
-
+          node-version: '22'
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         shell: bash
         run: |
-          release_tag="v$(node -p 'require("./module.json").version')"
-          title=$(node -p '`${require("./module.json").title} ${require("./module.json").version}`')
+          release_tag="v$(node -p 'require("./dist/module.json").version')"
+          title=$(node -p '`${require("./dist/module.json").title} ${require("./dist/module.json").version}`')
           if gh release view "$release_tag" >/dev/null 2>&1; then
             echo "Release $release_tag already exists; nothing to publish."
             exit 0

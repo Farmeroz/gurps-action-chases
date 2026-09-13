@@ -1,0 +1,16 @@
+[
+  "LICENSE",
+  "README.md",
+  "docs/User-Guide.pdf",
+  "module.json",
+  "scripts/engine.mjs",
+  "scripts/hash.mjs",
+  "scripts/integration.mjs",
+  "scripts/log.mjs",
+  "scripts/main.mjs",
+  "scripts/rules.mjs",
+  "scripts/store.mjs",
+  "scripts/view.mjs",
+  "scripts/workflow.mjs",
+  "styles/chases.css"
+]

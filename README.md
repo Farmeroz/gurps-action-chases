@@ -2,7 +2,7 @@
 
 A shared chase tracker for GMs and players using **Foundry VTT 14** and **GURPS Game Aid 0.18.x**. Add characters, vehicles, drivers, and passengers with or without actors or tokens, then follow the tracker’s **Next action** prompts.
 
-Version **0.2.5**. Use with **GURPS Action 2: Exploits**, pp. 31–35.
+Version **0.2.6**. Use with **GURPS Action 2: Exploits**, pp. 31–35.
 
 ## Install or update
 

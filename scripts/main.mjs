@@ -1,3 +1,4 @@
+import * as log from './log.mjs';
 import {
   ID,
   SIDES,
@@ -55,7 +56,7 @@ import { tasks, attackAllowed, suggestedCheck } from './workflow.mjs';
 
 let tracker, Tracker, FormWindow;
 const notifyError = (err) => {
-  console.warn(ID, err);
+  log.warn(err);
   ui.notifications.error(err.message ?? String(err));
 };
 const bool = (data, key) => data[key] === 'on';
@@ -697,7 +698,7 @@ Hooks.once('init', () => {
   }
 });
 Hooks.once('ready', () => {
-  game.modules.get(ID).api = { open: openChases, version: '0.2.5' };
+  game.modules.get(ID).api = { open: openChases, version: '0.2.6' };
   installStoreHooks(() => {
     if (tracker?.rendered) tracker.render({ force: true });
   }, openChases);

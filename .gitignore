@@ -3,3 +3,8 @@ dist/
 stage/
 *.zip
 .DS_Store
+
+.cache/
+test-output/
+tests/artifacts/
+tests/results.json

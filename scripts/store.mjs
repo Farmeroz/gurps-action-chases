@@ -1,3 +1,4 @@
+import * as log from './log.mjs';
 import {
   ID,
   SIDES,
@@ -247,7 +248,7 @@ export async function execute(doc, command, user, requestId = '') {
       ui.notifications.warn(
         'Roll saved, but its chat message could not be posted. Read the chase log.',
       );
-      console.warn(ID, err);
+      log.warn(err);
     }
   }
   return next;
@@ -285,7 +286,7 @@ export function installStoreHooks(refresh, open = () => {}) {
           [`flags.${ID}.receipt`]: { ok, by: game.user.id, error, nonce: request.nonce },
         });
       } catch (err) {
-        console.warn(ID, 'Could not update chase receipt', err);
+        log.warn('Could not update chase receipt', err);
       }
     });
   });

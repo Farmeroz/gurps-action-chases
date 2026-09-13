@@ -1,0 +1,53 @@
+name: Checks
+
+on:
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Test and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Prepare test sources
+        run: npm run test:setup
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Check formatting
+        run: npm run format:check
+      - name: Check syntax
+        run: npm run check:syntax
+      - name: Run automated suite
+        run: npm test
+      - name: Run browser suites
+        run: npm run test:browser
+      - name: Build and verify clean package
+        run: npm run build
+      - name: Attach verified package
+        uses: actions/upload-artifact@v4
+        with:
+          name: foundry-package
+          path: dist/
+          if-no-files-found: error
+      - name: Attach test diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-diagnostics
+          path: |
+            test-output/
+            tests/artifacts/
+            tests/results.json
+          if-no-files-found: ignore

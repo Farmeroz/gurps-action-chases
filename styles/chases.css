@@ -1,0 +1,150 @@
+/* Style our content only: Foundry owns the window title, header icons and controls. */
+.gac-app { --gac-bg:#141d29; --gac-panel:#1d2938; --gac-line:#394a5c; --gac-text:#f1f4f7; --gac-muted:#b7c4d3; --gac-accent:#65dac5; }
+.gac-app .window-content { background:var(--gac-bg); color:var(--gac-text); overflow:auto; padding:0; font-family:Arial,Helvetica,sans-serif; }
+.gac-app :where(.window-content) *, .gac-app :where(.window-content) *::before, .gac-app :where(.window-content) *::after {box-sizing:border-box;}
+.gac-app :where(.window-content) h1,.gac-app :where(.window-content) h2,.gac-app :where(.window-content) h3 {font-family:inherit;color:var(--gac-text);border:0;margin:0;text-shadow:none;}
+.gac-app :where(.window-content) h1 {font-size:27px;font-weight:700;line-height:1.2;}
+.gac-app :where(.window-content) h2 {font-size:19px;font-weight:700;line-height:1.3;}
+.gac-app :where(.window-content) p {line-height:1.5;margin:8px 0;overflow-wrap:anywhere;}
+.gac-app :where(.window-content) button {flex:0 1 auto;width:auto;min-height:34px;height:auto;line-height:1.25;border:1px solid #526679;border-radius:6px;background:#29394c;color:var(--gac-text);padding:7px 11px;font-family:inherit;font-size:12px;white-space:normal;cursor:pointer;box-shadow:none;}
+.gac-app :where(.window-content) button:hover:not(:disabled) {background:#3a5067;border-color:var(--gac-accent);}
+.gac-app :where(.window-content) button:disabled {opacity:.43;cursor:default;}
+.gac-app :where(.window-content) button.gac-primary {background:var(--gac-accent);border-color:var(--gac-accent);color:#102823;font-weight:700;}
+.gac-app :where(.window-content) input:not([type="checkbox"]),.gac-app :where(.window-content) select,.gac-app :where(.window-content) textarea {width:100%;min-width:0;height:36px;padding:7px 9px;background:#101923;color:var(--gac-text);border:1px solid #53677b;border-radius:5px;font-family:inherit;font-size:14px;line-height:1.3;box-shadow:none;}
+.gac-app :where(.window-content) select option {background:#101923;color:var(--gac-text);}
+.gac-app :where(.window-content) textarea {height:auto;min-height:75px;resize:vertical;}
+.gac-app :where(.window-content) input[type="checkbox"] {appearance:auto;width:17px;height:17px;flex:0 0 17px;margin:0;accent-color:var(--gac-accent);}
+.gac-app :where(.window-content) input[type="checkbox"]::before,.gac-app :where(.window-content) input[type="checkbox"]::after {display:none;}
+.gac-app :where(.window-content) :focus-visible {outline:2px solid var(--gac-accent);outline-offset:3px;}
+.gac-shell {padding:20px;min-width:0;}
+.gac-toolbar,.gac-title,.gac-phase,.gac-section-title,.gac-team header,.gac-next {display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;}
+.gac-toolbar {padding-bottom:18px;border-bottom:1px solid var(--gac-line);margin-bottom:23px;}
+.gac-picker {display:flex;align-items:center;gap:10px;flex:1;min-width:240px;max-width:470px;font-size:12px;}
+.gac-picker span {white-space:nowrap;color:var(--gac-muted);}
+.gac-buttons,.gac-gmbar {display:flex;gap:7px;flex-wrap:wrap;align-items:center;}
+.gac-kicker {font-size:10px;text-transform:uppercase;letter-spacing:1.6px;font-weight:700;color:var(--gac-accent);display:block;margin-bottom:8px;}
+.gac-title>div:first-child {flex:1;min-width:250px;}
+.gac-round {display:flex;gap:12px;align-items:center;padding:9px 15px;background:var(--gac-panel);border-radius:8px;}
+.gac-round strong {font-size:40px;line-height:1;}
+.gac-round span {font-size:10px;line-height:1.7;letter-spacing:1px;color:var(--gac-muted);}
+.gac-muted,.gac-app :where(.window-content) small {color:var(--gac-muted);font-size:12px;}
+.gac-track {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;margin:22px 0 16px;}
+.gac-track>div {min-height:84px;background:#1b2633;border:1px solid var(--gac-line);border-radius:7px;padding:12px 7px;text-align:center;}
+.gac-track>div.current {background:#163e3b;border-color:var(--gac-accent);}
+.gac-track span {font-size:10px;color:var(--gac-muted);display:block;margin-bottom:7px;}
+.gac-track strong {font-size:14px;}
+.gac-track small {display:block;margin-top:5px;font-size:10px;color:var(--gac-accent);}
+.gac-phase {font-size:13px;margin:12px 0;}
+.gac-phase span {font-size:11px;color:var(--gac-muted);}
+.gac-gmbar {padding:12px 0;margin-bottom:8px;border-top:1px solid var(--gac-line);}
+.gac-teams {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;}
+.gac-team {padding:18px;border:1px solid var(--gac-line);border-top:3px solid var(--gac-accent);border-radius:8px;background:var(--gac-panel);min-width:0;}
+.gac-team.pursuer {border-top-color:#f4b67a;}
+.gac-team.pursuer .gac-kicker {color:#f4b67a;}
+.gac-team header {margin-bottom:12px;}
+.gac-team header button {font-size:10px;min-height:26px;padding:4px 7px;}
+.gac-declaration {background:#14202d;border-radius:5px;padding:11px 12px;margin-top:15px;font-size:14px;}
+.gac-declaration p {font-size:12px;}
+.gac-hint {font-size:12px;color:var(--gac-muted);}
+.gac-hint span {white-space:nowrap;}
+.gac-breakdown {margin:15px 0;font-size:12px;display:grid;grid-template-columns:1fr;gap:6px;}
+.gac-breakdown>span {display:flex;justify-content:space-between;gap:15px;color:var(--gac-muted);}
+.gac-breakdown b {color:var(--gac-text);}
+.gac-target {display:block;border-top:1px solid var(--gac-line);padding-top:9px;margin-top:3px;color:var(--gac-accent);font-size:17px;}
+.gac-roll {display:flex;align-items:center;gap:12px;margin-top:14px;padding:12px;background:#101923;border-radius:6px;}
+.gac-roll strong {font-size:36px;color:var(--gac-accent);}
+.gac-roll span {font-size:12px;line-height:1.5;}
+.gac-next {margin-top:17px;padding:16px;border:1px solid #547a7b;background:#182e36;border-radius:7px;}
+.gac-next>div:first-child {flex:1;min-width:200px;}
+.gac-next p {font-size:12px;color:var(--gac-muted);}
+.gac-section-title {margin:27px 0 12px;}
+.gac-section-title small {margin-left:6px;}
+.gac-roster {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+.gac-person {padding:14px;border:1px solid var(--gac-line);border-radius:7px;background:#192532;min-width:0;}
+.gac-person-title {display:flex;gap:10px;align-items:flex-start;}
+.gac-person-title>div {flex:1;min-width:0;}
+.gac-person-title strong {font-size:14px;overflow-wrap:anywhere;}
+.gac-person-title p {font-size:10px;color:var(--gac-muted);margin:5px 0;}
+.gac-person-icon {background:#304354;border-radius:5px;padding:8px;color:var(--gac-accent);font-size:13px;}
+.gac-status {font-size:9px;text-transform:uppercase;letter-spacing:.4px;border-radius:4px;padding:4px 6px;background:#284238;color:#a6edc1;max-width:110px;}
+.gac-status.closeCall {background:#63491f;color:#ffe0a6;}
+.gac-status.wreck,.gac-status.out {background:#5a2c31;color:#ffc4c4;}
+.gac-person-stats {display:flex;gap:7px;flex-wrap:wrap;font-size:11px;color:var(--gac-muted);margin:9px 0 13px;}
+.gac-person-stats span {background:#101a25;padding:4px 6px;border-radius:3px;}
+.gac-person .gac-buttons button {font-size:10px;min-height:28px;padding:5px 7px;}
+.gac-app :where(.window-content) details {font-size:12px;margin:10px 0;}
+.gac-app :where(.window-content) summary {cursor:pointer;color:var(--gac-muted);padding:5px 0;}
+.gac-recorded {font-size:12px;color:var(--gac-accent);}
+.gac-log {margin-top:24px!important;border-top:1px solid var(--gac-line);padding-top:12px;}
+.gac-log summary {font-size:15px;color:var(--gac-text);}
+.gac-log small {margin-left:10px;}
+.gac-log ol {list-style:none;padding:0;max-height:230px;overflow:auto;margin:10px 0;}
+.gac-log li {padding:8px 0;border-bottom:1px solid #273644;font-size:12px;line-height:1.5;overflow-wrap:anywhere;}
+.gac-log li span {display:inline-block;min-width:32px;color:var(--gac-accent);}
+.gac-app :where(.window-content) footer {font-size:10px;color:var(--gac-muted);line-height:1.6;padding-top:15px;}
+.gac-empty {padding:75px 20px;text-align:center;}
+.gac-empty p {color:var(--gac-muted);margin:20px 0;}
+.gac-warning,.gac-error {padding:12px;border:1px solid #ac8045;border-radius:5px;background:#463621;color:#ffdfae;font-size:13px;}
+.gac-error[hidden] {display:none;}
+.gac-edit-form {padding:22px;max-height:80vh;overflow:auto;}
+.gac-form-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;}
+.gac-field {display:flex;flex-direction:column;gap:7px;margin-bottom:13px;min-width:0;}
+.gac-field>span {font-size:12px;color:var(--gac-muted);}
+.gac-full {grid-column:1 / -1;}
+.gac-check {display:flex;align-items:center;gap:8px;font-size:13px;margin:8px 0 15px;}
+.gac-app :where(.window-content) fieldset {border:1px solid var(--gac-line);border-radius:6px;padding:14px;}
+.gac-app :where(.window-content) legend {font-size:13px;color:var(--gac-accent);padding:0 6px;}
+.gac-app :where(.window-content) fieldset p,.gac-edit-form>p {font-size:12px;color:var(--gac-muted);}
+.gac-form-footer {display:flex;justify-content:flex-end;gap:10px;border-top:1px solid var(--gac-line);padding-top:15px;margin-top:15px;}
+.gac-help p {font-size:13px;line-height:1.6;}
+.gac-open {margin:4px;width:calc(100% - 8px);}
+@media(max-width:760px) { .gac-app :where(.window-content) .gac-teams,.gac-app :where(.window-content) .gac-roster {grid-template-columns:1fr;} .gac-shell {padding:14px;} .gac-app :where(.window-content) h1 {font-size:23px;} }
+@media(max-width:500px) { .gac-app :where(.window-content) .gac-form-grid {grid-template-columns:1fr;} .gac-track small {display:none;} .gac-track strong {font-size:11px;} .gac-track>div {min-height:65px;} }
+/* Guided workflow, v0.2 */
+.gac-app :where(.window-content) [hidden] {display:none!important;}
+.gac-title {margin-bottom:14px;}
+.gac-next {margin:0 0 14px;align-items:flex-start;}
+.gac-next h2 {font-size:18px;}
+.gac-next .gac-kicker {margin:0 0 6px;}
+.gac-next p {margin-bottom:0;}
+.gac-teams {margin-top:15px;}
+.gac-team {padding:14px;}
+.gac-team header {margin-bottom:6px;}
+.gac-team h2 {font-size:17px;}
+.gac-declaration {margin-top:9px;padding:9px;}
+.gac-track {margin:14px 0;}
+.gac-track>div {min-height:52px;padding:9px 5px;}
+.gac-menu {max-width:490px;margin:0!important;}
+.gac-menu[open] {width:100%;}
+.gac-menu summary {font-size:13px;text-align:right;}
+.gac-menu .gac-buttons {padding-top:8px;}
+.gac-task {display:flex;align-items:center;gap:15px;justify-content:space-between;border:1px solid var(--gac-line);border-left:3px solid var(--gac-accent);border-radius:6px;padding:12px;background:var(--gac-panel);margin:8px 0;}
+.gac-task>div:first-child {flex:1;min-width:0;}
+.gac-task h3 {font-size:14px;margin-top:4px;}
+.gac-task p {font-size:12px;color:var(--gac-muted);margin:5px 0;}
+.gac-task.waiting {border-left-color:#718299;}
+.gac-tasks>details {border-bottom:1px solid var(--gac-line);padding-bottom:7px;}
+.gac-quick {margin-top:10px;}
+.gac-quick>.gac-buttons {margin-top:6px;}
+.gac-quick .gac-check {font-size:11px;margin:9px 0 0;}
+.gac-crew {border-left:2px solid #496879;margin:0 0 0 16px;padding:3px 0 0 10px;}
+.gac-crew .gac-person {margin-top:7px;background:#16222e;}
+.gac-unit {min-width:0;}
+.gac-person-stats {font-size:12px;line-height:1.5;}
+.gac-person details .gac-buttons {margin-top:6px;}
+.gac-person .gac-person-title p {font-size:11px;}
+.gac-feedback {padding:8px 12px;border-radius:5px;background:#173931;font-size:12px;}
+.gac-feedback.pending {background:#29344a;}
+.gac-feedback.rejected {background:#593525;color:#ffdfae;}
+.gac-toolbar {margin-bottom:15px;padding-bottom:10px;}
+.gac-app :where(.window-content) input[readonly] {color:var(--gac-muted);border-style:dashed;}
+@media(max-width:760px){.gac-task{flex-wrap:wrap;}.gac-task .gac-buttons{width:100%;}.gac-crew{margin-left:8px;padding-left:7px;}}
+
+/* Compact settings: editable fields and read-only information occupy separate rows. */
+.gac-settings .gac-settings-status {padding:12px 14px;margin:0 0 16px;border:1px solid var(--gac-line);border-radius:6px;background:#182431;}
+.gac-settings-status dl {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0;}
+.gac-settings-status dt {font-size:12px;color:var(--gac-muted);margin-bottom:5px;}
+.gac-settings-status dd {font-size:14px;line-height:1.4;margin:0;overflow-wrap:anywhere;}
+.gac-settings .gac-settings-status p,.gac-settings .gac-settings-help {font-size:12px;line-height:1.45;color:var(--gac-muted);margin:10px 0 0;}
+.gac-settings .gac-settings-help {margin:-5px 0 12px;}
+@media(max-width:500px){.gac-settings-status dl{grid-template-columns:1fr;}}

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+stage/
+.cache/
+test-output/
+tests/artifacts/
+tests/results.json
+tests/fixtures/
+package-lock.json
+*.pdf
+*.zip

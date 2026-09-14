@@ -56,6 +56,16 @@ const shell = `<!doctype html><html><head><meta charset="utf-8"><link rel="style
     await page.locator('.gac-person').first().waitFor();
     assert.equal(await page.locator('.gac-person').count(), 4);
     pass('create example with ad hoc vehicle, operator and passenger');
+    await page.locator('[data-do="configure"]').evaluate((node) => {
+      node.closest('details').open = true;
+    });
+    await page.locator('[data-do="configure"]').focus();
+    await page.getByRole('tooltip').waitFor();
+    assert.match(await page.getByRole('tooltip').textContent(), /combat timing/);
+    await page.keyboard.press('Escape');
+    assert.equal(await page.getByRole('tooltip').count(), 0);
+    pass('keyboard help explains chase controls and dismisses without changing state');
+
     await click('[data-do="edit"]');
     await page.locator('[name="name"]').fill('Getaway van <img src=x onerror=alert(1)>');
     await page.locator('.gac-editor [type="submit"]').click();

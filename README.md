@@ -2,7 +2,7 @@
 
 A shared chase tracker for GMs and players using **Foundry VTT 14** and **GURPS Game Aid 0.18.x**. Add characters, vehicles, drivers, and passengers with or without actors or tokens, then follow the tracker’s **Next action** prompts.
 
-Version **0.2.6**. Use with **GURPS Action 2: Exploits**, pp. 31–35.
+Version **0.2.7**. Use with **GURPS Action 2: Exploits**, pp. 31–35.
 
 ## Install or update
 
@@ -29,3 +29,7 @@ The tracker saves accepted changes automatically. It does not move tokens or app
 Report problems through [GitHub Issues](https://github.com/Farmeroz/gurps-action-chases/issues).
 
 Unofficial fan aid. GURPS is a trademark of Steve Jackson Games. This module is not affiliated with or endorsed by Steve Jackson Games, Foundry Gaming LLC, or the GURPS Game Aid maintainers. See [LICENSE](LICENSE) for the software licence.
+
+## Help tooltips
+
+Hover over a control or focus it with the keyboard for a short explanation. Press Escape to dismiss the help. Under **Configure Settings → Module Settings → GURPS Action Chases**, turn off **Show help tooltips** to hide optional help on your client. Labels, settings descriptions, and important notices remain visible. Other users keep their own preference.

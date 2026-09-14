@@ -2,7 +2,7 @@
   "id": "gurps-action-chases",
   "title": "GURPS Action Chases",
   "description": "A shared, persistent GURPS 4e Action chase tracker with ad hoc people and vehicles, player controls, and guided resolution.",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "authors": [
     {
       "name": "Phil Brown",
@@ -25,11 +25,11 @@
       }
     ]
   },
-  "esmodules": ["scripts/main.mjs"],
+  "esmodules": ["scripts/main.mjs", "scripts/help.mjs"],
   "styles": ["styles/chases.css"],
   "url": "https://github.com/Farmeroz/gurps-action-chases",
   "manifest": "https://github.com/Farmeroz/gurps-action-chases/releases/latest/download/module.json",
-  "download": "https://github.com/Farmeroz/gurps-action-chases/releases/download/v0.2.6/gurps-action-chases-v0.2.6.zip",
+  "download": "https://github.com/Farmeroz/gurps-action-chases/releases/download/v0.2.7/gurps-action-chases-v0.2.7.zip",
   "readme": "README.md",
   "license": "LICENSE"
 }

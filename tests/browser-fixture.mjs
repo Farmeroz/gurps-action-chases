@@ -151,6 +151,7 @@ globalThis.Roll = class {
   }
 };
 await import('../scripts/main.mjs');
+await import('../scripts/help.mjs');
 Hooks.call('init');
 Hooks.call('ready');
 game.modules.get('gurps-action-chases').api.open();

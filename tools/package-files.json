@@ -5,11 +5,13 @@
   "module.json",
   "scripts/engine.mjs",
   "scripts/hash.mjs",
+  "scripts/help.mjs",
   "scripts/integration.mjs",
   "scripts/log.mjs",
   "scripts/main.mjs",
   "scripts/rules.mjs",
   "scripts/store.mjs",
+  "scripts/tooltip-engine.mjs",
   "scripts/view.mjs",
   "scripts/workflow.mjs",
   "styles/chases.css"
